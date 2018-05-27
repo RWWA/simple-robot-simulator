@@ -4,7 +4,7 @@ var MoveRobot = {
         $('#command-form').submit(function(e){
             e.preventDefault();
             //TODO: sort a value like 1,1,north
-            var commands = $(this).serializeArray()[0].value.toLowerCase().split(/,?\s+/);
+            var commands = $(this).serializeArray()[0].value.toLowerCase().split(/\b\s*,?\s*/);
             var command = commands.shift();
             if (command.length) { //check whether a command is specified
                 if (command != 'place' && !MoveRobot.isRobotOnTable()){
@@ -20,19 +20,19 @@ var MoveRobot = {
                         {
                             MoveRobot.error("Insufficient arguemnts provided");
                         }
-                        break;
+                        return;
                     case 'move':
                         MoveRobot.move();
-                        break;
+                        return;
                     case 'left':
                         MoveRobot.rotateLeft();
-                        break;
+                        return;
                     case 'right':
                         MoveRobot.rotateRight();
-                        break;
+                        return;
                     case 'report':
                         MoveRobot.report();
-                        break;
+                        return;
                 }
             }
 
