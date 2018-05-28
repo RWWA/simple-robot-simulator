@@ -208,6 +208,7 @@ var MoveRobot = {
     'place': function(x, y, direction) {
         var convertedUnits = MoveRobot.convertCoordinatesToAbsolute(x, y);
         if(MoveRobot.validMove(convertedUnits[0], convertedUnits[1]) && MoveRobot.validDirection(direction)) {
+            $('#robot').appendTo($('#table'));
             MoveRobot.moveRobot(convertedUnits[0], convertedUnits[1]);
             MoveRobot.setDirection(direction);
         }
